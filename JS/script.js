@@ -8,6 +8,13 @@
 
 // for(let i = 1; i <= 10; i = i +)
 
+function graciasXcomprar(){
+    alert("Gracias por su compra " + registro + "!")
+}
+function graciasXvisita(){
+    alert("Gracias por visitarnos " + registro + "!")
+}
+
 let productoA = "Camiseta"
 let precioProductoA = 70000
 let stockProductoA = 10
@@ -18,7 +25,7 @@ let stockProductoB = 8
 
 let registro = prompt("Bienvenido, ingrese su nombre")
 
-if(registro != ""){
+if((registro != "")&&(registro !== Number())){
 
     let deseoDeCompra = prompt("Bienvenido " + registro + ". Desea comprar?\n\nSI para comprar\nNO para salir")
 
@@ -40,7 +47,7 @@ if(registro != ""){
                     else{
                         let precioA = cantidadProductoA * precioProductoA
                         alert("el precio de su compra es $" + precioA)
-                        alert("Gracias por su compra!")
+                        graciasXcomprar()
                     }
             }
             else if(producto.toLowerCase() == "hoodie"){
@@ -51,7 +58,7 @@ if(registro != ""){
                     else{
                         let precioB = cantidadProductoB * precioProductoB
                         alert("el precio de su compra es $" + precioB)
-                        alert("Gracias por su compra!")
+                        graciasXcomprar()
                     }
             }
             else{
@@ -60,7 +67,7 @@ if(registro != ""){
         }
     }
     else{
-        alert("Gracias por visitarnos!")
+        graciasXvisita()
     }
 }
 else{
