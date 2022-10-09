@@ -15,13 +15,30 @@ function graciasXvisita(){
     alert("Gracias por visitarnos " + registro + "!")
 }
 
-let productoA = "Camiseta"
-let precioProductoA = 70000
-let stockProductoA = 10
+let productoA = {
+    nombre: "Camiseta",
+    stock: 10
+}
 
-let productoB = "Hoodie"
-let precioProductoB = 90000
-let stockProductoB = 8
+function Producto(nombre, stock){
+    this.nombre = nombre;
+    this.stock = stock;
+}
+
+let productoB = new Producto("hoodie", 8)
+
+let precioProductos = [70000, 90000]
+let precioTotal = 0
+
+function precio(cantidad, precio){
+    precioTotal += (cantidad * precio)
+}
+
+let contact = document.getElementById("contact")
+
+//contact.innerText = Bienvenido + registro
+
+console.log(contact.innerText)
 
 let registro = prompt("Bienvenido, ingrese su nombre")
 
@@ -40,23 +57,23 @@ if((registro != "")&&(registro !== Number())){
         let producto = prompt("Que producto desea comprar?\n\ncamiseta\nhoodie")
 
             if(producto.toLowerCase() == "camiseta"){
-                let cantidadProductoA = prompt("Que cantidad de " + productoA + " desea comprar?")
-                    if(cantidadProductoA > stockProductoA){
-                        alert("Lo sentimos, solo hay " + stockProductoA + " disponibles")
+                let cantidadProductoA = prompt("Que cantidad de " + productoA.nombre + " desea comprar?")
+                    if(cantidadProductoA > productoA.stock){
+                        alert("Lo sentimos, solo hay " + productoA.stock + " disponibles")
                     }
                     else{
-                        let precioA = cantidadProductoA * precioProductoA
-                        alert("el precio de su compra es $" + precioA)
+                        precio(cantidadProductoA, precioProductos[0])
+                        alert("el precio de su compra es $" + precioTotal)
                         graciasXcomprar()
                     }
             }
             else if(producto.toLowerCase() == "hoodie"){
-                let cantidadProductoB = prompt("Que cantidad de " + productoB + " desea comprar?")
-                    if(cantidadProductoB > stockProductoB){
-                        alert("Lo sentimos, solo hay " + stockProductoB + " disponibles")
+                let cantidadProductoB = prompt("Que cantidad de " + productoB.nombre + " desea comprar?")
+                    if(cantidadProductoB > productoB.stock){
+                        alert("Lo sentimos, solo hay " + productoB.stock + " disponibles")
                     }
                     else{
-                        let precioB = cantidadProductoB * precioProductoB
+                        let precioB = cantidadProductoB * precioProductos[1]
                         alert("el precio de su compra es $" + precioB)
                         graciasXcomprar()
                     }
